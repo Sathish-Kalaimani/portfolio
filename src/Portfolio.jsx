@@ -1,5 +1,4 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code2, Cpu, Globe } from 'lucide-react';
 
 const Portfolio = () => {
   const projects = [
@@ -39,11 +38,6 @@ const Portfolio = () => {
             Software Engineer specializing in backend architecture and cloud-native solutions. 
             Currently optimizing performance at [Your Company/Project].
           </p>
-          <div className="flex gap-4">
-            <Github className="cursor-pointer hover:text-blue-400 transition" />
-            <Linkedin className="cursor-pointer hover:text-blue-400 transition" />
-            <Mail className="cursor-pointer hover:text-blue-400 transition" />
-          </div>
         </div>
       </header>
 
@@ -58,8 +52,7 @@ const Portfolio = () => {
           {projects.map((p, i) => (
             <div key={i} className="group bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-blue-500 transition-all duration-300">
               <div className="flex justify-between mb-4">
-                <Code2 className="text-blue-400" />
-                <ExternalLink size={20} className="text-slate-500 group-hover:text-white" />
+
               </div>
               <h3 className="text-xl font-bold mb-2 group-hover:text-blue-400 transition">{p.title}</h3>
               <p className="text-slate-400 mb-6">{p.desc}</p>
