@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import './Portfolio'
+import Portfolio from './Portfolio';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Portfolio/>
     </div>
   );
 }
