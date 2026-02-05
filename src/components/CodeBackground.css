@@ -1,0 +1,40 @@
+.code-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  padding: 40px;
+}
+
+.code-text {
+  font-family: 'Courier New', monospace;
+  font-size: 80px;
+  line-height: 2.2;
+  color: rgba(34, 197, 94, 0.7);
+  white-space: pre;
+  margin: 0;
+  width: 100%;
+  animation: scrollCode 700s linear infinite;
+}
+
+.code-text-2 {
+  animation-delay: -75s;
+}
+
+@keyframes scrollCode {
+  0% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(-50%);
+    opacity: 0.3;
+  }
+}
