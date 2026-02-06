@@ -36,7 +36,7 @@ export function Certifications() {
       organization: "ISTQB",
       date: "October 2012",
       location: "Pune",
-      credential: "Certificate No: ITB-CTFL-0050888",
+      credential: "Cert #ITB-CTFL-0050888",
       icon: <FaAward size={24} />
     },
     {

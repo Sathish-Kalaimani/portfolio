@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { PictureFrame } from './PictureFrame';
 import { CountUp } from './CountUp';
@@ -10,48 +10,53 @@ export function Hero() {
   const isAvailableForOpportunities = false; // Set to false when not looking for jobs
   
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1200], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 1000], [1, 0]);
-  const scale = useTransform(scrollY, [0, 1000], [1, 0.6]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const scale = useTransform(scrollY, [0, 400], [1, 0.95]);
+  const y = useTransform(scrollY, [0, 400], [0, 50]);
   
   const name = "Sathish Kalaimani";
-  const title = "SENIOR SOFTWARE ENGINEER";
+  const subtitle = "Senior Software Engineer";
+  const title = "FULL STACK JAVA SOLUTIONS | APPLICATION ARCHITECT";
   const tagline = "Building enterprise-grade solutions for supply chain & retail.";
 
-  const textVariants = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.01, // Even faster: was 0.02
-      },
-    },
+  // Simple fade-in animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
   };
 
-  const letterVariants = {
+  const fadeInFast = {
     hidden: { opacity: 0 },
-    visible: {
+    visible: { 
       opacity: 1,
-      transition: { duration: 0.01 },
-    },
+      transition: { duration: 0.3 }
+    }
   };
 
   const stagger = {
+    hidden: { opacity: 0 },
     visible: {
+      opacity: 1,
       transition: {
-        staggerChildren: 0.15
+        staggerChildren: 0.1,
+        delayChildren: 0.1
       }
     }
   };
 
-  const floatAnimation = {
+  // Memoize background animations to prevent re-renders
+  const floatAnimation = useMemo(() => ({
     y: [0, -20, 0],
     transition: {
       duration: 3,
       repeat: Infinity,
       ease: "easeInOut"
     }
-  };
+  }), []);
 
   return (
     <motion.section
@@ -59,13 +64,13 @@ export function Hero() {
       initial="hidden"
       animate="visible"
       variants={stagger}
-      style={{ scale, opacity }}
+      style={{ opacity, scale }}
     >
       {/* Animated background elements */}
       <motion.div 
         className="hero-bg-circle hero-bg-circle-1"
         animate={floatAnimation}
-        style={{ scale, opacity }}
+        style={{ opacity }}
       />
       <motion.div 
         className="hero-bg-circle hero-bg-circle-2"
@@ -77,61 +82,31 @@ export function Hero() {
             ease: "easeInOut"
           }
         }}
-        style={{ scale, opacity }}
+        style={{ opacity }}
       />
 
-      <motion.div 
-        className="hero-inner"
-        style={{ y, opacity, scale }}
-      >
+      <motion.div className="hero-inner" style={{ y }}>
         <motion.div
           className="hero-content"
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 120, damping: 14, delay: 0.1, duration: 0.1 }}
+          variants={fadeIn}
         >
-          <motion.h1 variants={textVariants} initial="hidden" animate="visible">
-            {name.split("").map((char, index) => (
-              <motion.span key={`${char}-${index}`} variants={letterVariants}>
-                {char}
-              </motion.span>
-            ))}
+          <motion.h1 variants={fadeIn}>
+            {name}
           </motion.h1>
           
-          <motion.h2 
-            variants={textVariants} 
-            initial="hidden" 
-            animate="visible"
-            transition={{ delay: 0.8 }}
-          >
-            {title.split("").map((char, index) => (
-              <motion.span key={`${char}-${index}`} variants={letterVariants}>
-                {char}
-              </motion.span>
-            ))}
-            <span> @ </span><span className="hero-company">Walmart</span>
+          <motion.h2 variants={fadeIn}>
+            {title}
           </motion.h2>
+
+          <motion.p className="hero-subtitle" variants={fadeIn}>
+            {subtitle} <span>@ </span><span className="hero-company">Walmart</span>
+          </motion.p>
           
-          <motion.p
-            className="hero-tagline"
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.6 }}
-          >
-            {tagline.split("").map((char, index) => (
-              <motion.span key={`${char}-${index}`} variants={letterVariants}>
-                {char}
-              </motion.span>
-            ))}
+          <motion.p className="hero-tagline" variants={fadeIn}>
+            {tagline}
           </motion.p>
 
-          <motion.div 
-            className="hero-cta"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.4, duration: 0.6 }}
-          >
+          <motion.div className="hero-cta" variants={fadeIn}>
             <a href="#work" className="btn btn-primary">
               View My Work
             </a>
@@ -140,12 +115,7 @@ export function Hero() {
             </a>
           </motion.div>
 
-          <motion.div 
-            className="hero-social"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.8, duration: 0.6 }}
-          >
+          <motion.div className="hero-social" variants={fadeInFast}>
             <a 
               href="https://github.com/Sathish-Kalaimani" 
               target="_blank" 
@@ -171,12 +141,7 @@ export function Hero() {
           </motion.div>
 
           {/* Quick Stats Mini Bar */}
-          <motion.div 
-            className="hero-quick-stats"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.2, duration: 0.6 }}
-          >
+          <motion.div className="hero-quick-stats" variants={fadeInFast}>
             <div className="quick-stat-icon">
               <FaJava size={20} />
             </div>
@@ -198,34 +163,24 @@ export function Hero() {
           </motion.div>
 
           {/* Bottom Status Badges */}
-          <motion.div 
-            className="hero-bottom-badges"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 3.4, duration: 0.6 }}
-          >
+          <motion.div className="hero-bottom-badges" variants={fadeInFast}>
             <div className={`hero-badge ${isAvailableForOpportunities ? 'available' : 'unavailable'}`}>
               <span className="badge-dot"></span>
               <span>{isAvailableForOpportunities ? 'Open To New Opportunities' : 'Focused On Current Role'}</span>
             </div>
-            
           </motion.div>
         </motion.div>
 
         <motion.div
           className="hero-image-container"
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 120, damping: 14, delay: 0.1, duration: 0.1 }}
+          variants={fadeIn}
         >
           <PictureFrame />
           
           {/* Achievements/Highlights Bar */}
           <motion.div 
             className="hero-achievements"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
+            variants={fadeIn}
           >
             <div className="achievement-item">
               <div className="achievement-value">
@@ -236,7 +191,7 @@ export function Hero() {
             <div className="achievement-divider"></div>
             <div className="achievement-item">
               <div className="achievement-value">
-                <CountUp end={10} duration={2} suffix="+" />
+                <CountUp end={8} duration={2} suffix="+" />
               </div>
               <div className="achievement-label">Awards</div>
             </div>
