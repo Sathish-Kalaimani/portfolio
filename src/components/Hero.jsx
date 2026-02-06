@@ -10,8 +10,8 @@ export function Hero() {
   const isAvailableForOpportunities = false; // Set to false when not looking for jobs
   
   const name = "Sathish Kalaimani";
-  const subtitle = "SENIOR SOFTWARE ENGINEER";
-  const title = "Java Full Stack Solution | Application Architect";
+  const title = "JAVA FULL STACK SOLUTION | APPLICATION ARCHITECT";
+  const subtitle = "Senior Software Engineer";
   const tagline = "Building enterprise-grade solutions for supply chain & retail.";
 
   // Simple fade-in animation variants
@@ -87,11 +87,11 @@ export function Hero() {
           </motion.h1>
           
           <motion.h2 variants={fadeIn}>
-            {subtitle}
+            {title}
           </motion.h2>
 
           <motion.p className="hero-subtitle" variants={fadeIn}>
-            {title} <span>@ </span><span className="hero-company">Walmart</span>
+            {subtitle} <span>@ </span><span className="hero-company">Walmart</span>
           </motion.p>
           
           <motion.p className="hero-tagline" variants={fadeIn}>
