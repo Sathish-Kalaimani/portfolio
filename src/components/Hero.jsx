@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { PictureFrame } from './PictureFrame';
 import { CountUp } from './CountUp';
 import { FaGithub, FaLinkedin, FaEnvelope, FaJava, FaReact, FaDocker, FaPython, FaAward } from 'react-icons/fa';
@@ -9,14 +9,9 @@ export function Hero() {
   // Toggle this to show/hide "Available for opportunities" badge
   const isAvailableForOpportunities = false; // Set to false when not looking for jobs
   
-  const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
-  const scale = useTransform(scrollY, [0, 400], [1, 0.95]);
-  const y = useTransform(scrollY, [0, 400], [0, 50]);
-  
   const name = "Sathish Kalaimani";
-  const subtitle = "Senior Software Engineer";
-  const title = "FULL STACK JAVA SOLUTIONS | APPLICATION ARCHITECT";
+  const subtitle = "SENIOR SOFTWARE ENGINEER";
+  const title = "Java Full Stack Solution | Application Architect";
   const tagline = "Building enterprise-grade solutions for supply chain & retail.";
 
   // Simple fade-in animation variants
@@ -64,13 +59,11 @@ export function Hero() {
       initial="hidden"
       animate="visible"
       variants={stagger}
-      style={{ opacity, scale }}
     >
       {/* Animated background elements */}
       <motion.div 
         className="hero-bg-circle hero-bg-circle-1"
         animate={floatAnimation}
-        style={{ opacity }}
       />
       <motion.div 
         className="hero-bg-circle hero-bg-circle-2"
@@ -82,10 +75,9 @@ export function Hero() {
             ease: "easeInOut"
           }
         }}
-        style={{ opacity }}
       />
 
-      <motion.div className="hero-inner" style={{ y }}>
+      <div className="hero-inner">
         <motion.div
           className="hero-content"
           variants={fadeIn}
@@ -95,11 +87,11 @@ export function Hero() {
           </motion.h1>
           
           <motion.h2 variants={fadeIn}>
-            {title}
+            {subtitle}
           </motion.h2>
 
           <motion.p className="hero-subtitle" variants={fadeIn}>
-            {subtitle} <span>@ </span><span className="hero-company">Walmart</span>
+            {title} <span>@ </span><span className="hero-company">Walmart</span>
           </motion.p>
           
           <motion.p className="hero-tagline" variants={fadeIn}>
@@ -191,7 +183,7 @@ export function Hero() {
             <div className="achievement-divider"></div>
             <div className="achievement-item">
               <div className="achievement-value">
-                <CountUp end={8} duration={2} suffix="+" />
+                <CountUp end={10} duration={2} suffix="+" />
               </div>
               <div className="achievement-label">Awards</div>
             </div>
@@ -212,7 +204,92 @@ export function Hero() {
             </div>
           </motion.div>
         </motion.div>
-      </motion.div>
+
+        <motion.div
+          className="hero-content"
+          variants={fadeIn}
+        >
+          <motion.h1 variants={fadeIn}>
+            {name}
+          </motion.h1>
+          
+          <motion.h2 variants={fadeIn}>
+            {title}
+          </motion.h2>
+
+          <motion.p className="hero-subtitle" variants={fadeIn}>
+            {subtitle} <span>@ </span><span className="hero-company">Walmart</span>
+          </motion.p>
+          
+          <motion.p className="hero-tagline" variants={fadeIn}>
+            {tagline}
+          </motion.p>
+
+          <motion.div className="hero-cta" variants={fadeIn}>
+            <a href="#work" className="btn btn-primary">
+              View My Work
+            </a>
+            <a href="#contact" className="btn btn-outline">
+              Get In Touch
+            </a>
+          </motion.div>
+
+          <motion.div className="hero-social" variants={fadeInFast}>
+            <a 
+              href="https://github.com/Sathish-Kalaimani" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <FaGithub size={24} />
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/sathish-kalaimani-83927557/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <FaLinkedin size={24} />
+            </a>
+            <a 
+              href="mailto:Sathish.Kalaimani7@gmail.com"
+              className="social-icon"
+            >
+              <FaEnvelope size={24} />
+            </a>
+          </motion.div>
+
+          {/* Quick Stats Mini Bar */}
+          <motion.div className="hero-quick-stats" variants={fadeInFast}>
+            <div className="quick-stat-icon">
+              <FaJava size={20} />
+            </div>
+            <div className="quick-stat-icon">
+              <SiSpringboot size={20} />
+            </div>
+            <div className="quick-stat-icon">
+              <FaReact size={20} />
+            </div>
+            <div className="quick-stat-icon">
+              <FaDocker size={20} />
+            </div>
+            <div className="quick-stat-icon">
+              <SiKubernetes size={20} />
+            </div>
+            <div className="quick-stat-icon">
+              <FaPython size={20} />
+            </div>
+          </motion.div>
+
+          {/* Bottom Status Badges */}
+          <motion.div className="hero-bottom-badges" variants={fadeInFast}>
+            <div className={`hero-badge ${isAvailableForOpportunities ? 'available' : 'unavailable'}`}>
+              <span className="badge-dot"></span>
+              <span>{isAvailableForOpportunities ? 'Open To New Opportunities' : 'Focused On Current Role'}</span>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
     </motion.section>
   );
 }

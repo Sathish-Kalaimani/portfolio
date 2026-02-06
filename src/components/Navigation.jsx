@@ -12,7 +12,7 @@ export function Navigation() {
           <a href="#work">WORK</a>
           <a href="#hobbies">HOBBIES</a>
           <a href="#contact">CONTACT</a>
-          <a className="resume" href="#">RESUME</a>
+          <a className="resume" href="/Sathish-Kalaimani-Resume.pdf">RESUME</a>
         </div>
       </div>
     </nav>

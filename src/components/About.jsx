@@ -87,7 +87,7 @@ export function About() {
         <motion.li variants={fadeUp}>GenAI/Copilot adoption & DevOps excellence</motion.li>
       </motion.ul>
 
-      <motion.a className="btn ghost" href="/Sathish Kalaimani.pdf" download variants={scaleIn}>DOWNLOAD CV</motion.a>
+      <motion.a className="btn ghost" href="/Sathish-Kalaimani-Resume.pdf" download variants={scaleIn}>DOWNLOAD CV</motion.a>
     </motion.section>
   );
 }

@@ -49,7 +49,7 @@ export function Hobbies() {
       { 
         name: "Drawing", 
         icon: <FaPaintBrush size={40} />, 
-        description: "Sketching and creative art",
+        description: "Sketching",
         hasGallery: true,
         galleryKey: "drawings"
       },
@@ -60,12 +60,12 @@ export function Hobbies() {
         hasGallery: true,
         galleryKey: "photos"
       },
-      { name: "Playing Cricket", icon: <FaBaseballBall size={40} />, description: "Sports enthusiast" },
-      { name: "Watching TV", icon: <FaTv size={40} />, description: "Entertainment & relaxation" },
-      { name: "Listening to Music", icon: <FaMusic size={40} />, description: "All genres" },
-      { name: "Cooking", icon: <FaUtensils size={40} />, description: "Culinary experiments" },
-      { name: "Driving", icon: <FaCar size={40} />, description: "Road trips & exploration" },
-      { name: "Coding", icon: <FaCode size={40} />, description: "Personal projects" }
+      { name: "Cricket", icon: <FaBaseballBall size={40} />, description: "Playing & Watching" },
+      { name: "Watching TV", icon: <FaTv size={40} />, description: "Entertainment" },
+      { name: "Listening to Music", icon: <FaMusic size={40} />, description: "All Genres" },
+      { name: "Cooking", icon: <FaUtensils size={40} />, description: "Culinary Experiments" },
+      { name: "Driving", icon: <FaCar size={40} />, description: "Road Trips & Exploration" },
+      { name: "Coding", icon: <FaCode size={40} />, description: "Personal Projects" }
     ];
   
     const openGallery = (galleryKey) => {

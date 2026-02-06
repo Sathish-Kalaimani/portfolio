@@ -18,6 +18,7 @@ body {
   line-height: 1.6;
   position: relative;
   overflow-x: hidden;
+  width: 100%;
 }
 
 a {
@@ -393,7 +394,7 @@ main {
   padding: 80px 0 180px 0;
   background: rgba(11, 14, 20, 0.95);
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 /* Animated background circles */
@@ -575,7 +576,7 @@ main {
   letter-spacing: 1px;
   margin-bottom: 20px;
   font-weight: 700;
-  white-space: nowrap;
+
 }
 
 .hero-company {
@@ -769,6 +770,14 @@ main {
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }
 
+.hero-image-container {
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Achievements Bar */
 .hero-achievements {
   position: absolute;
@@ -832,7 +841,7 @@ main {
 @media (max-width: 900px) {
   .hero {
     min-height: 60vh;
-    padding: 60px 20px 140px 20px;
+    padding: 60px 20px 160px 20px;
     background: rgba(11, 14, 20, 1);
     overflow: hidden;
     position: relative;
@@ -845,15 +854,27 @@ main {
 
   .hero-inner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 48px;
     max-width: 100%;
+  }
+
+  .hero-image-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    order: -1;
   }
 
   .hero-content {
     max-width: 100%;
     padding-left: 0;
     z-index: 2;
+    align-items: center;
+    text-align: center;
   }
 
   .hero-content h1 {
@@ -876,25 +897,10 @@ main {
     margin-top: 0;
   }
 
-  .hero-image-container {
-    flex-shrink: 0;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-image-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 2;
-  }
-
   .hero-achievements {
     gap: 16px;
     padding: 16px 20px;
-    bottom: -80px;
+    bottom: -60px;
     right: 0;
     left: 0;
     margin: 0 auto;
@@ -935,7 +941,7 @@ main {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 40px 16px;
+    padding: 40px 16px 80px 16px;
     background: #0b0e14;
     overflow: hidden;
     position: relative;
@@ -979,6 +985,13 @@ main {
     padding: 16px;
     justify-content: center;
     background: rgba(30, 35, 45, 0.9);
+    position: relative;
+    bottom: auto;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
   }
 
   .achievement-item {
@@ -993,7 +1006,7 @@ main {
   .hero-frame {
     width: 100%;
     max-width: 300px;
-    height: auto;
+    height: 362px;
   }
 
   .hero-social {
@@ -1426,14 +1439,15 @@ main {
 
 .certifications-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 24px;
   margin-top: 40px;
 }
 
 .certification-card {
   display: flex;
-  padding: 10px;
+  gap: 20px;
+  padding: 28px;
   background: rgba(31, 41, 55, 0.2);
   border: 1px solid #1f2937;
   border-radius: 12px;
