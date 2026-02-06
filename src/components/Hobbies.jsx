@@ -2,22 +2,46 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { FaPaintBrush, FaCamera, FaBaseballBall, FaTv, FaMusic, FaUtensils, FaCode, FaImages } from "react-icons/fa";
 import { GalleryModal } from './GalleryModal';
+import jesus from '../images/drawing/jesus.jpg';
+import narasimha from '../images/drawing/narasimha.jpg';
+import shiv from '../images/drawing/shiv.jpg';
+import bison from '../images/photos/bison.jpg'
+import colosseum from '../images/photos/colosseum.jpg'
+import eiffeltower from '../images/photos/eiffeltower.jpg'
+import gardenofgods from '../images/photos/gardenofgods.jpg'
+import mountrushmore from '../images/photos/mountrushmore.jpg'
+import mycar from '../images/photos/mycar.jpg'
+import mycarinsnow from '../images/photos/mycarinsnow.jpg'
+import newjersy from '../images/photos/newjersy.jpg'
+import pisa from '../images/photos/pisa.jpg'
+import snow from '../images/photos/snow.jpg'
+import statueofliberty from '../images/photos/statueofliberty.jpg'
+import vatican from '../images/photos/vatican.jpg'
 
 export function Hobbies() {
   const [galleryOpen, setGalleryOpen] = useState(null);
 
   // Add your images to /public/gallery/ folder
   const drawingImages = [
-    '/gallery/drawings/drawing1.jpg',
-    '/gallery/drawings/drawing2.jpg',
-    '/gallery/drawings/drawing3.jpg',
+    jesus,
+    narasimha,
+    shiv
     // Add more drawing images here
   ];
 
   const photoImages = [
-    '/gallery/photos/photo1.jpg',
-    '/gallery/photos/photo2.jpg',
-    '/gallery/photos/photo3.jpg',
+    bison,
+    colosseum,
+    eiffeltower,
+    gardenofgods,
+    mycar,
+    mycarinsnow,
+    mountrushmore,
+    newjersy,
+    pisa,
+    snow,
+    statueofliberty,
+    vatican
     // Add more photo images here
   ];
 

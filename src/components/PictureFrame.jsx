@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import img1 from "../images/hero1.jpeg";
-import img2 from "../images/IMG_7663.jpeg";
+import photo1 from "../images/myphoto/photo1.jpg";
+import photo2 from "../images/myphoto/photo2.jpg";
 import { useEffect, useRef, useState } from "react";
 
 const images = [
-  img1,
-  img2,
-  img1,
+  photo1,
+  photo2
 ];
 
 export function PictureFrame() {
