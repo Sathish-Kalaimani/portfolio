@@ -183,7 +183,7 @@ export function Hero() {
             <div className="achievement-divider"></div>
             <div className="achievement-item">
               <div className="achievement-value">
-                <CountUp end={10} duration={2} suffix="+" />
+                <CountUp end={8} duration={2} suffix="+" />
               </div>
               <div className="achievement-label">Awards</div>
             </div>
