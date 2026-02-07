@@ -159,7 +159,6 @@ main {
   padding: 40px 0;
   background: var(--bg);
   position: relative;
-  z-index: 2;
 }
 
 .section h3 {
@@ -843,11 +842,12 @@ main {
 
 @media (max-width: 900px) {
   .hero {
+    display: flex;
     min-height: 60vh;
     padding: 60px 20px 160px 20px;
     background: rgba(11, 14, 20, 1);
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
     z-index: 1;
   }
 
@@ -944,6 +944,7 @@ main {
 
 @media (max-width: 768px) {
   .hero {
+    display: flex;
     padding: 40px 16px 80px 16px;
     background: #0b0e14;
     overflow: hidden;

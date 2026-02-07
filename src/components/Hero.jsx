@@ -10,7 +10,7 @@ export function Hero() {
   const isAvailableForOpportunities = false; // Set to false when not looking for jobs
   
   const name = "Sathish Kalaimani";
-  const title = "JAVA FULL STACK SOLUTION | APPLICATION ARCHITECT";
+  const title = "Java Full Stack Solutions | Application Architect";
   const subtitle = "Senior Software Engineer";
   const tagline = "Specializing in Desigining and Delivering Scalable Software that perform in the real world.";
 
@@ -64,6 +64,7 @@ export function Hero() {
       <motion.div 
         className="hero-bg-circle hero-bg-circle-1"
         animate={floatAnimation}
+        style={{willChange:'transform'}}
       />
       <motion.div 
         className="hero-bg-circle hero-bg-circle-2"
@@ -75,6 +76,7 @@ export function Hero() {
             ease: "easeInOut"
           }
         }}
+        style={{willChange:'transform'}}
       />
 
       <div className="hero-inner">
@@ -201,91 +203,6 @@ export function Hero() {
             <div className="achievement-item">
               <div className="achievement-value">Fortune #1</div>
               <div className="achievement-label">Company</div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="hero-content"
-          variants={fadeIn}
-        >
-          <motion.h1 variants={fadeIn}>
-            {name}
-          </motion.h1>
-          
-          <motion.h2 variants={fadeIn}>
-            {title}
-          </motion.h2>
-
-          <motion.p className="hero-subtitle" variants={fadeIn}>
-            {subtitle} <span>@ </span><span className="hero-company">Walmart</span>
-          </motion.p>
-          
-          <motion.p className="hero-tagline" variants={fadeIn}>
-            {tagline}
-          </motion.p>
-
-          <motion.div className="hero-cta" variants={fadeIn}>
-            <a href="#work" className="btn btn-primary">
-              View My Work
-            </a>
-            <a href="#contact" className="btn btn-outline">
-              Get In Touch
-            </a>
-          </motion.div>
-
-          <motion.div className="hero-social" variants={fadeInFast}>
-            <a 
-              href="https://github.com/Sathish-Kalaimani" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <FaGithub size={24} />
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/sathish-kalaimani-83927557/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <FaLinkedin size={24} />
-            </a>
-            <a 
-              href="mailto:Sathish.Kalaimani7@gmail.com"
-              className="social-icon"
-            >
-              <FaEnvelope size={24} />
-            </a>
-          </motion.div>
-
-          {/* Quick Stats Mini Bar */}
-          <motion.div className="hero-quick-stats" variants={fadeInFast}>
-            <div className="quick-stat-icon">
-              <FaJava size={20} />
-            </div>
-            <div className="quick-stat-icon">
-              <SiSpringboot size={20} />
-            </div>
-            <div className="quick-stat-icon">
-              <FaReact size={20} />
-            </div>
-            <div className="quick-stat-icon">
-              <FaDocker size={20} />
-            </div>
-            <div className="quick-stat-icon">
-              <SiKubernetes size={20} />
-            </div>
-            <div className="quick-stat-icon">
-              <FaPython size={20} />
-            </div>
-          </motion.div>
-
-          {/* Bottom Status Badges */}
-          <motion.div className="hero-bottom-badges" variants={fadeInFast}>
-            <div className={`hero-badge ${isAvailableForOpportunities ? 'available' : 'unavailable'}`}>
-              <span className="badge-dot"></span>
-              <span>{isAvailableForOpportunities ? 'Open To New Opportunities' : 'Focused On Current Role'}</span>
             </div>
           </motion.div>
         </motion.div>

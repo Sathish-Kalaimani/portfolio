@@ -61,7 +61,7 @@ export function TechStack() {
 
   return (
     <section id="stack" className="section skills">
-      <h3>TECH STACK</h3>
+      <h3>SKILLS</h3>
       <motion.div
         className="skills-logos"
         initial="hidden"
