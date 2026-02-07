@@ -348,8 +348,11 @@ main {
 
 /* CONTACT */
 .contact {
-  text-align: center;
   padding: 60px 40px;
+}
+
+.contact-content {
+  text-align: center;
 }
 
 .email {
@@ -688,8 +691,8 @@ main {
 /* Status Indicator */
 .hero-bottom-badges {
   position: absolute;
-  bottom: -90px;
-  left: 40px;
+  bottom: -60px;
+  left: 60px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1439,7 +1442,7 @@ main {
 
 .certifications-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
   margin-top: 40px;
 }

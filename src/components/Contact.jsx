@@ -58,12 +58,16 @@ export function Contact() {
       variants={stagger}
     >
       <motion.h3 variants={fadeUp}>CONTACT</motion.h3>
+      <motion.div className="contact-content">
+      
       <motion.p variants={fadeUp}>Let's connect and build something great together.</motion.p>
       <motion.p className="email" variants={slideInLeft}>
-        <a href="mailto:Sathish.Kalaimani7@gmail.com">Sathish.Kalaimani7@gmail.com</a>
+        <a href="mailto:contact@sathishkalaimani.com">Contact@SathishKalaimani.com</a>
       </motion.p>
 
-      <motion.a className="btn primary" href="mailto:Sathish.Kalaimani7@gmail.com" variants={scaleIn}>GET IN TOUCH</motion.a>
+      <motion.a className="btn primary" href="mailto:contact@sathishkalaimani.com" variants={scaleIn}>GET IN TOUCH</motion.a>
+      </motion.div>
+      
     </motion.section>
   );
 }

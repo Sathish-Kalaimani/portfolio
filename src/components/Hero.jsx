@@ -12,7 +12,7 @@ export function Hero() {
   const name = "Sathish Kalaimani";
   const title = "JAVA FULL STACK SOLUTION | APPLICATION ARCHITECT";
   const subtitle = "Senior Software Engineer";
-  const tagline = "Building enterprise-grade solutions for supply chain & retail.";
+  const tagline = "Specializing in Desigining and Delivering Scalable Software that perform in the real world.";
 
   // Simple fade-in animation variants
   const fadeIn = {
@@ -125,7 +125,7 @@ export function Hero() {
               <FaLinkedin size={24} />
             </a>
             <a 
-              href="mailto:Sathish.Kalaimani7@gmail.com"
+              href="mailto:contact@sathishkalaimani.com"
               className="social-icon"
             >
               <FaEnvelope size={24} />
