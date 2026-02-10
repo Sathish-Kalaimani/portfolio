@@ -347,11 +347,88 @@ main {
 
 /* CONTACT */
 .contact {
-  padding: 60px 40px;
+  padding: 30px 20px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(11, 14, 20, 0.98) 0%, rgba(31, 41, 55, 0.95) 100%);
+}
+
+/* Animated grid pattern background */
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+  animation: gridMove 20s linear infinite;
+}
+
+/* Animated dots pattern */
+.contact::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
 }
 
 .contact-content {
   text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Floating background elements */
+.contact-bg-element {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.contact-bg-1 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  top: 10%;
+  right: 5%;
+}
+
+.contact-bg-2 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  bottom: 10%;
+  left: 5%;
+}
+
+.contact-bg-3 {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  top: 50%;
+  right: 30%;
 }
 
 .email {
@@ -546,6 +623,11 @@ main {
   animation: pulse 2s ease-in-out infinite;
 }
 
+.hero-badge-location {
+  color: #9ca3af;
+  border-color: rgba(156, 163, 175, 0.3);
+}
+
 .badge-dot {
   width: 8px;
   height: 8px;
@@ -687,7 +769,12 @@ main {
   transform: translateY(-4px);
 }
 
-/* Status Indicator */
+/* Top Badge - Above Name */
+.hero-top-badge {
+  margin-bottom: 20px;
+}
+
+/* Bottom Badges */
 .hero-bottom-badges {
   position: absolute;
   bottom: -60px;
@@ -1537,5 +1624,259 @@ main {
     white-space: normal;
     word-break: break-word;
     font-size: 11px;
+  }
+}
+
+/* TESTIMONIALS SECTION */
+.testimonials-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.testimonials-subtitle {
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.testimonials-gallery {
+  position: relative;
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 80px;
+}
+
+.testimonial-container {
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.testimonials-pair {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(99, 102, 241, 0.1);
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--accent);
+  z-index: 10;
+}
+
+.gallery-nav:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--accent);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.gallery-nav.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.gallery-nav.disabled:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-50%);
+}
+
+.gallery-nav-left {
+  left: 0;
+}
+
+.gallery-nav-right {
+  right: 0;
+}
+
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.gallery-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.gallery-dots .dot:hover {
+  background: rgba(99, 102, 241, 0.5);
+  transform: scale(1.2);
+}
+
+.gallery-dots .dot.active {
+  background: var(--accent);
+  width: 12px;
+  height: 12px;
+}
+
+.testimonial-card {
+  background: rgba(31, 41, 55, 0.3);
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.testimonial-card:hover {
+  background: rgba(31, 41, 55, 0.5);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+}
+
+.testimonial-quote {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text);
+  font-style: italic;
+  margin: 0;
+  flex: 1;
+}
+
+.quote-left,
+.quote-right {
+  color: var(--accent);
+  opacity: 0.4;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.quote-left {
+  margin-right: 8px;
+}
+
+.quote-right {
+  margin-left: 8px;
+}
+
+.testimonial-author {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid rgba(99, 102, 241, 0.2);
+  gap: 12px;
+}
+
+.author-info {
+  flex: 1;
+  text-align: left;
+}
+
+.author-title-line {
+  font-size: 13px;
+  color: var(--accent);
+  margin: 0 0 4px 0;
+}
+
+.author-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.author-relationship {
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.8;
+  font-style: italic;
+  margin: 0;
+}
+
+.linkedin-link {
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.linkedin-link:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 40px 20px;
+  }
+
+  .testimonials-gallery {
+    padding: 0 60px;
+  }
+
+  .testimonials-pair {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .gallery-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-nav svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .testimonial-card {
+    padding: 24px;
+  }
+
+  .testimonial-quote {
+    font-size: 15px;
+  }
+
+  .author-name {
+    font-size: 16px;
+  }
+
+  .testimonial-author {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .linkedin-link {
+    align-self: flex-start;
   }
 }

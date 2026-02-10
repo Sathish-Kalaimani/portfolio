@@ -13,6 +13,7 @@ export function Hero() {
   const title = "Java Full Stack Solutions | Application Architect";
   const subtitle = "Senior Software Engineer";
   const tagline = "Specializing in Desigining and Delivering Scalable Software that perform in the real world.";
+  const location = "Bentonville, AR"; // Change to your location
 
   // Simple fade-in animation variants
   const fadeIn = {
@@ -84,6 +85,14 @@ export function Hero() {
           className="hero-content"
           variants={fadeIn}
         >
+          {/* Status Badge - Top Position */}
+          <motion.div className="hero-top-badge" variants={fadeInFast}>
+            <div className={`hero-badge ${isAvailableForOpportunities ? 'available' : 'unavailable'}`}>
+              <span className="badge-dot"></span>
+              <span>{isAvailableForOpportunities ? 'Open To New Opportunities' : 'Focused On Current Role'}</span>
+            </div>
+          </motion.div>
+
           <motion.h1 variants={fadeIn}>
             {name}
           </motion.h1>
@@ -156,11 +165,11 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Bottom Status Badges */}
+          {/* Location Badge - Bottom Position */}
           <motion.div className="hero-bottom-badges" variants={fadeInFast}>
-            <div className={`hero-badge ${isAvailableForOpportunities ? 'available' : 'unavailable'}`}>
-              <span className="badge-dot"></span>
-              <span>{isAvailableForOpportunities ? 'Open To New Opportunities' : 'Focused On Current Role'}</span>
+            <div className="hero-badge hero-badge-location">
+              <span>📍</span>
+              <span>Based in {location}</span>
             </div>
           </motion.div>
         </motion.div>

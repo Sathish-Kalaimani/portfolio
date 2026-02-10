@@ -18,7 +18,7 @@
   white-space: pre;
   margin: 0;
   width: 100%;
-  animation: scrollCode 700s linear infinite;
+  animation: scrollCode 500s linear infinite;
 }
 
 .code-text-2 {

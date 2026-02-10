@@ -8,6 +8,7 @@ import { Timeline } from './components/Timeline';
 import { Certifications } from './components/Certifications';
 import { Work } from './components/Work';
 import { Hobbies } from './components/Hobbies';
+import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { CodeBackground } from './components/CodeBackground';
 
@@ -25,11 +26,12 @@ const Portfolio = () => {
         <TechStack />
         <Timeline />
         <Work />
+        <Testimonials />
         <Contact />
       </main>
 
       <footer className="footer">
-        © 2026 Sathish Kalaimani · BUILT WITH REACT
+        © 2026 Sathish Kalaimani
       </footer>
     </>
   );

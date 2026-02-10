@@ -48,6 +48,25 @@ export function Contact() {
     }
   };
 
+  const float = {
+    y: [0, -20, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  };
+
+  const floatSlow = {
+    y: [0, -15, 0],
+    x: [0, 10, 0],
+    transition: {
+      duration: 5,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  };
+
   return (
     <motion.section
       id="contact"
@@ -57,6 +76,28 @@ export function Contact() {
       viewport={{ once: false, amount: 0.3 }}
       variants={stagger}
     >
+      {/* Animated background elements */}
+      <motion.div 
+        className="contact-bg-element contact-bg-1"
+        animate={float}
+      />
+      <motion.div 
+        className="contact-bg-element contact-bg-2"
+        animate={floatSlow}
+      />
+      <motion.div 
+        className="contact-bg-element contact-bg-3"
+        animate={{
+          y: [0, 20, 0],
+          x: [0, -15, 0],
+          transition: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }
+        }}
+      />
+
       <motion.h3 variants={fadeUp}>CONTACT</motion.h3>
       <motion.div className="contact-content">
       
