@@ -81,11 +81,11 @@ export function About() {
       </motion.p>
 
       <motion.ul className="list" variants={stagger}>
-        <motion.li variants={fadeUp}>Languages: Tamil, English, Hindi, Kannada, Marathi</motion.li>
-        <motion.li variants={fadeUp}>Full-stack development (Java, React, Spring Boot)</motion.li>
         <motion.li variants={fadeUp}>Cloud-native architecture & microservices</motion.li>
         <motion.li variants={fadeUp}>Enterprise system design & scalability</motion.li>
+        <motion.li variants={fadeUp}>Full-stack development (Java, React, Spring Boot)</motion.li>
         <motion.li variants={fadeUp}>GenAI/Copilot adoption & DevOps excellence</motion.li>
+        <motion.li variants={fadeUp}>Languages: Tamil, English, Hindi, Kannada, Marathi</motion.li>
       </motion.ul>
 
       <motion.a className="btn ghost" href="/Sathish-Kalaimani-Resume.pdf" download variants={scaleIn}>DOWNLOAD CV</motion.a>

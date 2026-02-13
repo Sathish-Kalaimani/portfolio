@@ -4,6 +4,7 @@ import { FaLinkedin, FaQuoteLeft, FaQuoteRight, FaChevronLeft, FaChevronRight } 
 
 export function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [expandedCards, setExpandedCards] = useState({});
   const testimonials = [
     {
       quote: "Sathish brings a natural curiosity and problem-solving mindset to every challenge. He is passionate about building thoughful solutioins that address real business needs and always eager to explore better,smarter ways to solve problems.",
@@ -13,22 +14,22 @@ export function Testimonials() {
       relationship: "Sathish reported directly",
       linkedin: "https://www.linkedin.com/in/vidhya-chandran-b416613b/"
     },
-    // {
-    //   quote: "Working with Sathish on the digital twin platform was outstanding. He demonstrated excellent technical skills and delivered the project ahead of schedule. His expertise in Spring Boot and React made a significant impact.",
-    //   name: "Colleague Name",
-    //   title: "Senior Architect",
-    //   company: "Walmart",
-    //   relationship: "Worked together on enterprise projects",
-    //   linkedin: ""
-    // },
-    // {
-    //   quote: "Sathish's ability to architect scalable microservices and mentor junior developers is remarkable. He brought innovative solutions to complex problems and always maintained high code quality standards.",
-    //   name: "Tech Lead Name",
-    //   title: "Technical Lead",
-    //   company: "FedEx Services",
-    //   relationship: "Collaborated on microservices architecture",
-    //   linkedin: ""
-    // }
+    {
+      quote: "Sathish consistently demonstrates strong leadership capabilities, particularly in cross‑functional settings. In a recent project, he played a key role in streamlining operations by proactively identifying inefficiencies, developing a thoughtful and comprehensive plan, and coordinating with team members to implement solutions. His efforts led to a measurable improvement in overall operational efficiency. He also maintains a high level of professionalism and adaptability. Sathish has repeatedly shown exceptional problem‑solving skills under pressure—for example, when he successfully addressed a critical stakeholder issue by proposing an innovative solution that not only met the stakeholder’s expectations but also strengthened their trust in the team.Additionally, Sathish possesses the ability to inspire and guide others through his forward‑thinking perspective. His vision and influence help motivate the team and contribute to a productive, collaborative environment.",
+      name: "Tiffany Stephenson",
+      title: "Staff Software Engineer",
+      company: "Walmart",
+      relationship: "Worked together on Supply Chain projects",
+      linkedin: "https://www.linkedin.com/in/tiffany-stephenson-b77b4354/"
+    },
+    {
+      quote: "Sathish does a great job of understanding complex problems by going deep into logic and system design. He stays calm even in challenging situations, which helps the team think clearly and make the right decisions. A good example is the current API implementation, where he designed a scalable solution to efficiently handle loading all view data at once.",
+      name: "Vasudev Rao",
+      title: "Software Engineer III",
+      company: "Walmart",
+      relationship: "Worked together on Supply Chain Projects",
+      linkedin: "https://www.linkedin.com/in/vasudevrao123/"
+    }
   ];
 
   const nextTestimonial = () => {
@@ -37,6 +38,13 @@ export function Testimonials() {
 
   const prevTestimonial = () => {
     setCurrentIndex((prev) => (prev - 2) < 0 ? Math.max(0, testimonials.length - 2) : prev - 2);
+  };
+
+  const toggleExpand = (index) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
   };
 
   const fadeUp = {
@@ -117,36 +125,51 @@ export function Testimonials() {
               animate="center"
               exit="exit"
             >
-              {testimonials.slice(currentIndex, currentIndex + 2).map((testimonial, idx) => (
-                <div key={currentIndex + idx} className="testimonial-card">
-                  <p className="testimonial-quote">
-                    <FaQuoteLeft className="quote-left" size={20} />
-                    {testimonial.quote}
-                    <FaQuoteRight className="quote-right" size={20} />
-                  </p>
-                  
-                  <div className="testimonial-author">
-                    <div className="author-info">
-                      <p className="author-title-line">
-                        <span className="author-name">{testimonial.name}</span>, {testimonial.title} @ {testimonial.company}
-                      </p>
-                      <p className="author-relationship">{testimonial.relationship}</p>
-                    </div>
+              {testimonials.slice(currentIndex, currentIndex + 2).map((testimonial, idx) => {
+                const cardIndex = currentIndex + idx;
+                const isExpanded = expandedCards[cardIndex];
+                const isLong = testimonial.quote.length > 300;
+                
+                return (
+                  <div key={cardIndex} className="testimonial-card">
+                    <p className={`testimonial-quote ${!isExpanded && isLong ? 'clamped' : ''}`}>
+                      <FaQuoteLeft className="quote-left" size={20} />
+                      {testimonial.quote}
+                      <FaQuoteRight className="quote-right" size={20} />
+                    </p>
                     
-                    {testimonial.linkedin && (
-                      <a 
-                        href={testimonial.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="linkedin-link"
-                        aria-label={`${testimonial.name}'s LinkedIn profile`}
+                    {isLong && (
+                      <button 
+                        className="read-more-btn"
+                        onClick={() => toggleExpand(cardIndex)}
                       >
-                        <FaLinkedin size={20} />
-                      </a>
+                        {isExpanded ? 'Show Less' : 'Read More'}
+                      </button>
                     )}
+                    
+                    <div className="testimonial-author">
+                      <div className="author-info">
+                        <p className="author-title-line">
+                          <span className="author-name">{testimonial.name}</span>, {testimonial.title} @ {testimonial.company}
+                        </p>
+                        <p className="author-relationship">{testimonial.relationship}</p>
+                      </div>
+                      
+                      {testimonial.linkedin && (
+                        <a 
+                          href={testimonial.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="linkedin-link"
+                          aria-label={`${testimonial.name}'s LinkedIn profile`}
+                        >
+                          <FaLinkedin size={20} />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </motion.div>
           </AnimatePresence>
         </div>

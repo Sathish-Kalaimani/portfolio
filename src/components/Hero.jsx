@@ -12,7 +12,7 @@ export function Hero() {
   const name = "Sathish Kalaimani";
   const title = "Java Full Stack Solutions | Application Architect";
   const subtitle = "Senior Software Engineer";
-  const tagline = "Specializing in Desigining and Delivering Scalable Software that perform in the real world.";
+  const tagline = "Specializing in designing and delivering scalable software that performs in the real world.";
   const location = "Bentonville, AR"; // Change to your location
 
   // Simple fade-in animation variants
@@ -109,40 +109,6 @@ export function Hero() {
             {tagline}
           </motion.p>
 
-          <motion.div className="hero-cta" variants={fadeIn}>
-            <a href="#work" className="btn btn-primary">
-              View My Work
-            </a>
-            <a href="#contact" className="btn btn-outline">
-              Get In Touch
-            </a>
-          </motion.div>
-
-          <motion.div className="hero-social" variants={fadeInFast}>
-            <a 
-              href="https://github.com/Sathish-Kalaimani" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <FaGithub size={24} />
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/sathish-kalaimani-83927557/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <FaLinkedin size={24} />
-            </a>
-            <a 
-              href="mailto:contact@sathishkalaimani.com"
-              className="social-icon"
-            >
-              <FaEnvelope size={24} />
-            </a>
-          </motion.div>
-
           {/* Quick Stats Mini Bar */}
           <motion.div className="hero-quick-stats" variants={fadeInFast}>
             <div className="quick-stat-icon">
@@ -167,9 +133,43 @@ export function Hero() {
 
           {/* Location Badge - Bottom Position */}
           <motion.div className="hero-bottom-badges" variants={fadeInFast}>
+            <div className="hero-social">
+              <a 
+                href="https://github.com/Sathish-Kalaimani" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-icon"
+              >
+                <FaGithub size={24} />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/sathish-kalaimani-83927557/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-icon"
+              >
+                <FaLinkedin size={24} />
+              </a>
+              <a 
+                href="mailto:contact@sathishkalaimani.com"
+                className="social-icon"
+              >
+                <FaEnvelope size={24} />
+              </a>
+            </div>
+            
             <div className="hero-badge hero-badge-location">
               <span>📍</span>
               <span>Based in {location}</span>
+            </div>
+
+            <div className="hero-cta">
+              <a href="#work" className="btn btn-primary">
+                View My Work
+              </a>
+              <a href="#contact" className="btn btn-outline">
+                Get In Touch
+              </a>
             </div>
           </motion.div>
         </motion.div>
