@@ -9,6 +9,7 @@ import { Certifications } from './components/Certifications';
 import { Work } from './components/Work';
 import { Hobbies } from './components/Hobbies';
 import { Testimonials } from './components/Testimonials';
+// import { Blog } from './components/Blog';
 import { Contact } from './components/Contact';
 import { CodeBackground } from './components/CodeBackground';
 
@@ -26,6 +27,7 @@ const Portfolio = () => {
         <TechStack />
         <Timeline />
         <Work />
+        {/* <Blog /> */}
         <Testimonials />
         <Contact />
       </main>

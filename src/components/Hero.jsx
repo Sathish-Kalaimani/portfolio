@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { motion } from "framer-motion";
 import { PictureFrame } from './PictureFrame';
 import { CountUp } from './CountUp';
-import { FaGithub, FaLinkedin, FaEnvelope, FaJava, FaReact, FaDocker, FaPython, FaAward } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaJava, FaReact, FaDocker, FaPython, FaAward, FaMedium } from 'react-icons/fa';
 import { SiSpringboot, SiKubernetes } from 'react-icons/si';
 
 export function Hero() {
@@ -149,6 +149,14 @@ export function Hero() {
                 className="social-icon"
               >
                 <FaLinkedin size={24} />
+              </a>
+              <a 
+                href="https://medium.com/@contact_53042" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-icon"
+              >
+                <FaMedium size={24} />
               </a>
               <a 
                 href="mailto:contact@sathishkalaimani.com"

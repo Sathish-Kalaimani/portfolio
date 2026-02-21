@@ -33,11 +33,21 @@ export function Testimonials() {
   ];
 
   const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 2) >= testimonials.length ? 0 : prev + 2);
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      setCurrentIndex((prev) => (prev + 1) >= testimonials.length ? 0 : prev + 1);
+    } else {
+      setCurrentIndex((prev) => (prev + 2) >= testimonials.length ? 0 : prev + 2);
+    }
   };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 2) < 0 ? Math.max(0, testimonials.length - 2) : prev - 2);
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      setCurrentIndex((prev) => (prev - 1) < 0 ? testimonials.length - 1 : prev - 1);
+    } else {
+      setCurrentIndex((prev) => (prev - 2) < 0 ? Math.max(0, testimonials.length - 2) : prev - 2);
+    }
   };
 
   const toggleExpand = (index) => {
@@ -68,7 +78,7 @@ export function Testimonials() {
       x: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: [0.25, 0.4, 0.25, 1]
       }
     },
@@ -76,7 +86,7 @@ export function Testimonials() {
       x: direction < 0 ? 1000 : -1000,
       opacity: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: [0.25, 0.4, 0.25, 1]
       }
     })
@@ -124,6 +134,17 @@ export function Testimonials() {
               initial="enter"
               animate="center"
               exit="exit"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = Math.abs(offset.x) * velocity.x;
+                if (swipe > 500) {
+                  nextTestimonial();
+                } else if (swipe < -500) {
+                  prevTestimonial();
+                }
+              }}
             >
               {testimonials.slice(currentIndex, currentIndex + 2).map((testimonial, idx) => {
                 const cardIndex = currentIndex + idx;
@@ -175,9 +196,19 @@ export function Testimonials() {
         </div>
 
         <button 
-          className={`gallery-nav gallery-nav-right ${currentIndex + 2 >= testimonials.length ? 'disabled' : ''}`}
+          className={`gallery-nav gallery-nav-right ${(() => {
+            const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+            return isMobile 
+              ? currentIndex >= testimonials.length - 1 
+              : currentIndex + 2 >= testimonials.length;
+          })() ? 'disabled' : ''}`}
           onClick={nextTestimonial}
-          disabled={currentIndex + 2 >= testimonials.length}
+          disabled={(() => {
+            const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+            return isMobile 
+              ? currentIndex >= testimonials.length - 1 
+              : currentIndex + 2 >= testimonials.length;
+          })()}
           aria-label="Next testimonial"
         >
           <FaChevronRight size={24} />
@@ -185,14 +216,25 @@ export function Testimonials() {
 
         {/* Pagination dots */}
         <div className="gallery-dots">
-          {Array.from({ length: Math.ceil(testimonials.length / 2) }).map((_, index) => (
-            <button
-              key={index}
-              className={`dot ${index * 2 === currentIndex ? 'active' : ''}`}
-              onClick={() => setCurrentIndex(index * 2)}
-              aria-label={`Go to testimonials ${index * 2 + 1}-${Math.min(index * 2 + 2, testimonials.length)}`}
-            />
-          ))}
+          {(() => {
+            const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+            const numDots = isMobile ? testimonials.length : Math.ceil(testimonials.length / 2);
+            
+            return Array.from({ length: numDots }).map((_, index) => {
+              const dotIndex = isMobile ? index : index * 2;
+              return (
+                <button
+                  key={index}
+                  className={`dot ${dotIndex === currentIndex ? 'active' : ''}`}
+                  onClick={() => setCurrentIndex(dotIndex)}
+                  aria-label={isMobile 
+                    ? `Go to testimonial ${index + 1}`
+                    : `Go to testimonials ${index * 2 + 1}-${Math.min(index * 2 + 2, testimonials.length)}`
+                  }
+                />
+              );
+            });
+          })()}
         </div>
       </div>
     </motion.section>
