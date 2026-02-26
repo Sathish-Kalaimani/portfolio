@@ -65,7 +65,7 @@ export function About() {
       viewport={{ once: false, amount: 0.3 }}
       variants={fadeUp}
     >
-      <motion.h3 variants={fadeUp}>ABOUT</motion.h3>
+      <motion.h3 className="about-title" variants={fadeUp}>ABOUT</motion.h3>
       <motion.p 
         className="text" 
         variants={textVariants}
@@ -88,7 +88,7 @@ export function About() {
         <motion.li variants={fadeUp}>Languages: Tamil, English, Hindi, Kannada, Marathi</motion.li>
       </motion.ul>
 
-      <motion.a className="btn ghost" href="/Sathish-Kalaimani-Resume.pdf" download variants={scaleIn}>DOWNLOAD CV</motion.a>
+      <motion.a className="btn ghost about-download" href="/Sathish-Kalaimani-Resume.pdf" download variants={scaleIn}>DOWNLOAD CV</motion.a>
     </motion.section>
   );
 }

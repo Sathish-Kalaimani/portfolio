@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { motion } from "framer-motion";
 import { PictureFrame } from './PictureFrame';
 import { CountUp } from './CountUp';
-import { FaGithub, FaLinkedin, FaEnvelope, FaJava, FaReact, FaDocker, FaPython, FaAward, FaMedium } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaJava, FaReact, FaDocker, FaAward, FaMedium } from 'react-icons/fa';
 import { SiSpringboot, SiKubernetes } from 'react-icons/si';
 
 export function Hero() {
@@ -125,9 +125,6 @@ export function Hero() {
             </div>
             <div className="quick-stat-icon">
               <SiKubernetes size={20} />
-            </div>
-            <div className="quick-stat-icon">
-              <FaPython size={20} />
             </div>
           </motion.div>
 
